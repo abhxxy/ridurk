@@ -1,0 +1,29 @@
+{
+  "name": "rentmed-whatsapp-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp bot for RentMed Healthcare Support",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "pm2:start": "pm2 start ecosystem.config.js",
+    "pm2:stop": "pm2 stop rentmed-bot",
+    "pm2:restart": "pm2 restart rentmed-bot",
+    "pm2:logs": "pm2 logs rentmed-bot"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "healthcare",
+    "rentmed"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pdfkit": "^0.18.0",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.23.0"
+  },
+  "devDependencies": {
+    "pm2": "^5.3.0"
+  }
+}
