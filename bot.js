@@ -16,6 +16,11 @@ const client = new Client({
 const userSessions = new Map();
 let botStartTime = null;
 
+// Blocklist - Users in this list will not receive responses
+const BLOCKED_USERS = [
+    '88541170254042@lid'
+];
+
 const STATES = {
     AWAITING_NAME: 'AWAITING_NAME',
     AWAITING_MAIN_MENU: 'AWAITING_MAIN_MENU',
@@ -130,6 +135,7 @@ async function sendWithMultipleFiles(msg, text, filePaths, delayMs = 1500) {
 
 function getUserSession(userId) {
     if (!userSessions.has(userId)) {
+        console.log('🆕 New user session created for:', userId);
         userSessions.set(userId, {
             state: STATES.AWAITING_NAME,
             name: null,
@@ -168,8 +174,21 @@ async function handleMessage(msg) {
     if (msg.from === 'status@broadcast') return;
 
     const userId = msg.from;
+
+    // Check if user is blocked
+    if (BLOCKED_USERS.includes(userId)) {
+        console.log('🚫 Blocked user attempted to message:', userId);
+        return; // Don't respond to blocked users
+    }
+
     const userMessage = msg.body.trim();
     const session = getUserSession(userId);
+
+    // Log user details for debugging/copying
+    console.log('\n📱 Message received:');
+    console.log('   User ID:', userId);
+    console.log('   Message:', userMessage);
+    console.log('   Timestamp:', new Date().toLocaleString());
 
     try {
         switch (session.state) {
