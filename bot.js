@@ -19,7 +19,8 @@ let botStartTime = null;
 // Blocklist - Users in this list will not receive responses
 const BLOCKED_USERS = [
     '88541170254042@lid',
-    '190662339219472@lid'
+    '190662339219472@lid',
+    '120363233839420953@g.us'
 ];
 
 const STATES = {
