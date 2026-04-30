@@ -20,7 +20,8 @@ let botStartTime = null;
 const BLOCKED_USERS = [
     '88541170254042@lid',
     '190662339219472@lid',
-    '120363233839420953@g.us'
+    '120363233839420953@g.us',
+    '217033304236082@lid'
 ];
 
 const STATES = {
